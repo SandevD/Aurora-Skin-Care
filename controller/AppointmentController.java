@@ -57,8 +57,9 @@ public class AppointmentController {
         String day = view.collectDay();
         String time = view.collectTime(dermatologist, day);
         Treatment treatment = view.chooseTreatment(treatments);
-
-        Appointment appointment = new Appointment(patient, dermatologist, day, time);
+        double registrationFee = view.collectRegistrationFee(); // Prompt for registration fee
+    
+        Appointment appointment = new Appointment(patient, dermatologist, day, time, registrationFee);
         appointment.setTreatment(treatment);
         appointments.add(appointment);
         System.out.println("\nAppointment booked successfully.");
@@ -67,13 +68,13 @@ public class AppointmentController {
     private void viewAppointmentsByDay() {
         String day = view.collectDay();
         List<Appointment> matchingAppointments = new ArrayList<>();
-    
+
         for (Appointment appointment : appointments) {
             if (appointment.getDay().equalsIgnoreCase(day)) {
                 matchingAppointments.add(appointment);
             }
         }
-    
+
         if (matchingAppointments.isEmpty()) {
             System.out.println(ConsoleColors.RED + "\nNo appointments found for " + day + ConsoleColors.RESET);
         } else {
@@ -108,8 +109,13 @@ public class AppointmentController {
             if (appointment.getAppointmentId() == appointmentId) {
                 String newDay = view.collectDay();
                 String newTime = view.collectTime(appointment.getDermatologist(), newDay);
-                appointment = new Appointment(appointment.getPatient(), appointment.getDermatologist(), newDay,
-                        newTime);
+                Treatment newTreatment = view.chooseTreatment(treatments); // Prompt for a new treatment
+
+                // Directly update fields instead of reassigning the object
+                appointment.setDay(newDay);
+                appointment.setTime(newTime);
+                appointment.setTreatment(newTreatment);
+
                 System.out.println("Appointment updated successfully.");
                 return;
             }
