@@ -79,19 +79,6 @@ public class AppointmentView {
         return treatments.get(scanner.nextInt() - 1);
     }
 
-    public String collectSearchQuery() {
-        scanner.nextLine();
-        System.out.println(ConsoleColors.RESET + "\n===============================================================\n");
-        System.out.print("Enter Patient Name or Appointment ID to Search: " + ConsoleColors.GREEN);
-        return scanner.nextLine();
-    }
-
-    public int collectAppointmentId() {
-        System.out.println(ConsoleColors.RESET + "\n===============================================================\n");
-        System.out.print("Enter Appointment ID: " + ConsoleColors.GREEN);
-        return scanner.nextInt();
-    }
-
     public double collectRegistrationFee() {
         System.out.println(ConsoleColors.RESET + "\n===============================================================");
         System.out.print("\nChange Registration Fee \n(leave empty to proceed with default of 500.00): " + ConsoleColors.GREEN);
@@ -114,5 +101,29 @@ public class AppointmentView {
 
         return registrationFee;
     }
+    
+    public String collectSearchQuery() {
+        scanner.nextLine();
+        System.out.println(ConsoleColors.RESET + "\n===============================================================\n");
+        System.out.print("Enter Patient Name or Appointment ID to Search: " + ConsoleColors.GREEN);
+        return scanner.nextLine();
+    }
 
+    public int collectAppointmentId() {
+        System.out.println(ConsoleColors.RESET + "\n===============================================================\n");
+        System.out.print("Enter Appointment ID: " + ConsoleColors.GREEN);
+        return scanner.nextInt();
+    }
+
+    public int displayUpdateOptions() {
+        System.out.println(ConsoleColors.RESET + "\n===============================================================\n");
+        System.out.println(ConsoleColors.BLUE + "Select What To Update" + ConsoleColors.RESET);
+        System.out.println("\n1. Update Dermatologist, Day & Time");
+        System.out.println("\n2. Update Treatment");
+        System.out.println("\n3. Update Patient Details");
+        System.out.println("\n4. Update All");
+        System.out.println(ConsoleColors.RESET + "\n===============================================================\n");
+        System.out.print("Choose an option: " + ConsoleColors.GREEN);
+        return scanner.nextInt();
+    }    
 }
