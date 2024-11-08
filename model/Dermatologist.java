@@ -49,7 +49,7 @@ public class Dermatologist {
     public String getName() {
         return name;
     }
-    public String getId() {
+    public int getId() {
         return id;
     }
 
