@@ -40,7 +40,7 @@ public class AppointmentView {
     }
 
     public Dermatologist chooseDermatologist(List<Dermatologist> dermatologists) {
-        System.out.println(ConsoleColors.RESET +"\n===============================================================\n");
+        System.out.println(ConsoleColors.RESET + "\n===============================================================\n");
         System.out.println(ConsoleColors.BLUE + "\nSelect an Available Dermatologist\n" + ConsoleColors.RESET);
         for (int i = 0; i < dermatologists.size(); i++) {
             System.out.println((i + 1) + ". " + dermatologists.get(i).getName());
@@ -91,4 +91,28 @@ public class AppointmentView {
         System.out.print("Enter Appointment ID: " + ConsoleColors.GREEN);
         return scanner.nextInt();
     }
+
+    public double collectRegistrationFee() {
+        System.out.println(ConsoleColors.RESET + "\n===============================================================");
+        System.out.print("\nChange Registration Fee \n(leave empty to proceed with default of 500.00): " + ConsoleColors.GREEN);
+
+        scanner.nextLine();
+        String input = scanner.nextLine().trim();
+        double registrationFee;
+
+        if (input.isEmpty()) {
+            registrationFee = 500.00;
+        } else {
+            try {
+                registrationFee = Double.parseDouble(input);
+            } catch (NumberFormatException e) {
+                System.out.println(
+                        ConsoleColors.RED + "\nInvalid input. Setting to default fee of 500.00." + ConsoleColors.RESET);
+                registrationFee = 500.00;
+            }
+        }
+
+        return registrationFee;
+    }
+
 }
