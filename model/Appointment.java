@@ -62,4 +62,12 @@ public class Appointment {
     public void setRegistrationFee(double registrationFee) {
         this.registrationFee = registrationFee;
     }
+
+    public void setDermatologist(Dermatologist dermatologist) {
+        this.dermatologist = dermatologist;
+    }
+    
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }
