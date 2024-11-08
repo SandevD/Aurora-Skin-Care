@@ -8,13 +8,15 @@ public class Appointment {
     private String day;
     private String time;
     private Treatment treatment;
+    private double registrationFee; 
 
-    public Appointment(Patient patient, Dermatologist dermatologist, String day, String time) {
+    public Appointment(Patient patient, Dermatologist dermatologist, String day, String time, double registrationFee) {
         this.appointmentId = idCounter++;
         this.patient = patient;
         this.dermatologist = dermatologist;
         this.day = day;
         this.time = time;
+        this.registrationFee = registrationFee; 
     }
 
     public void setTreatment(Treatment treatment) {
@@ -43,5 +45,21 @@ public class Appointment {
 
     public Treatment getTreatment() {
         return treatment;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+    
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public double getRegistrationFee() {
+        return registrationFee;
+    }
+
+    public void setRegistrationFee(double registrationFee) {
+        this.registrationFee = registrationFee;
     }
 }
