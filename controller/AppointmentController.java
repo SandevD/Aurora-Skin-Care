@@ -90,12 +90,15 @@ public class AppointmentController {
         for (Appointment appointment : appointments) {
             if (appointment.getPatient().getName().equalsIgnoreCase(query)
                     || String.valueOf(appointment.getAppointmentId()).equals(query)) {
-                System.out.println("Appointment Found:");
+                System.out.println("\nAppointment Found:");
                 System.out.println(
                         "ID: " + appointment.getAppointmentId() + ", Patient: " + appointment.getPatient().getName() +
                                 ", Day: " + appointment.getDay() + ", Time: " + appointment.getTime() + ", Treatment: "
                                 + appointment.getTreatment().getName());
             }
+        }
+        if (appointments.isEmpty()) {
+            System.out.println(ConsoleColors.RED + "\nNo appointment found!" + ConsoleColors.RESET);
         }
     }
 
@@ -111,7 +114,7 @@ public class AppointmentController {
                 return;
             }
         }
-        System.out.println("Appointment not found.");
+        System.out.println(ConsoleColors.RED + "\nAppointment not found" + ConsoleColors.RESET);
     }
 
     private void generateInvoice() {
@@ -123,6 +126,6 @@ public class AppointmentController {
                 return;
             }
         }
-        System.out.println("Appointment not found.");
+        System.out.println(ConsoleColors.RED + "\nAppointment not found" + ConsoleColors.RESET);
     }
 }
