@@ -49,6 +49,9 @@ public class Dermatologist {
     public String getName() {
         return name;
     }
+    public String getId() {
+        return id;
+    }
 
     public Map<String, List<String>> getWeeklySchedule() {
         return weeklySchedule;
